@@ -20,7 +20,7 @@ public class Constants {
 	}
 	
 	public enum Objects{
-		WATER_SOURCE(5125);
+		WATER_SOURCE(7143);
 		
 		private int numVal;
 		
@@ -35,7 +35,7 @@ public class Constants {
 	
 	public enum Tiles{
 		
-		FOUNTAINS_X(new RSTile(3190, 3471, 0)), FOUNTAINS_Y(new RSTile(3193, 3470, 0)),
+		FOUNTAINS_X(new RSTile(3206, 3430, 0)), FOUNTAINS_Y(new RSTile(3209, 3427, 0)),
 		FOUTAINS(new RSArea(FOUNTAINS_X.getTile(),FOUNTAINS_Y.getTile()));
 		
 		private RSTile tile;

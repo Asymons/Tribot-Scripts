@@ -8,33 +8,30 @@ import scripts.ProgressiveMiner.api.Node;
 import scripts.WaterFiller.data.Constants;
 import scripts.WaterFiller.data.Helper;
 
-public class WalkToBank extends Node{
-	
-	
+public class WalkToBank extends Node {
 
 	@Override
 	public void execute() {
-		
-		if(WebWalking.walkToBank()){
-			Banking.openBankBanker();
-			Helper.waitCondition(Banking.isBankScreenOpen());
-			Banking.depositAll();
-			Helper.waitCondition(!Inventory.isFull());
-			Banking.withdraw(28, Constants.Items.BOWL.getNumVal());
-			Helper.waitCondition(Inventory.isFull());
-			Banking.close();
-			Helper.waitCondition(!Banking.isBankScreenOpen());
 
-			
+		if (WebWalking.walkToBank()) {
+			if (Banking.isInBank()) {
+				Banking.openBankBanker();
+				Helper.waitCondition(Banking.isBankScreenOpen());
+				Banking.depositAll();
+				Helper.waitCondition(!Inventory.isFull());
+				Banking.withdraw(28, Constants.Items.BOWL.getNumVal());
+				Helper.waitCondition(Inventory.isFull());
+				Banking.close();
+				Helper.waitCondition(!Banking.isBankScreenOpen());
+			}
+
 		}
-		
+
 	}
 
 	@Override
 	public boolean validate() {
-		return Inventory.isFull() && Inventory.getCount(Constants.Items.BOWL.getNumVal()) == 28;
+		return Inventory.isFull() && Inventory.getCount(Constants.Items.FILLED_BOWL.getNumVal()) == 28;
 	}
-	
-	
 
 }
