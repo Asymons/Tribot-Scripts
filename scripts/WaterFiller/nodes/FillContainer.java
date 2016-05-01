@@ -49,13 +49,6 @@ public class FillContainer extends Node {
 		return null;
 	}
 
-	// InventoryItem[] tinderbox = Inventory.find(590);
-	// InventoryItem[] log = Inventory.find(2511);
-	// if(tinderbox.length>0&&log.length>0)
-	// {
-	// tinderbox[0].click("Use");
-	// sleep(100, 200);
-	// log[0].click("Use");
-	// }
+
 
 }
