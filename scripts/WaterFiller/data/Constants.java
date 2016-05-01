@@ -5,6 +5,13 @@ import org.tribot.api2007.types.RSTile;
 
 public class Constants {
 	
+	public static Items SELECTED_ITEM, FILLED_SELECTED_ITEM;
+	
+	public static void setItem(Items bowl, Items filledBowl){
+		SELECTED_ITEM = bowl;
+		FILLED_SELECTED_ITEM = filledBowl;
+	}
+	
 	public enum Items{
 		BOWL(1923),BUCKET(1925),JUG(1935),FILLED_BOWL(1921);
 		

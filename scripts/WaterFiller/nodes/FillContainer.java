@@ -21,12 +21,12 @@ public class FillContainer extends Node {
 
 		if (Constants.Tiles.FOUTAINS.getArea().contains(Player.getPosition())) {
 			RSObject source = Helper.findNearest(15, Constants.Objects.WATER_SOURCE.getNumVal());
-			RSItem[] contain = Inventory.find(Constants.Items.BOWL.getNumVal());
-			if (Inventory.find(Constants.Items.FILLED_BOWL.getNumVal()).length == 0) {
+			RSItem[] contain = Inventory.find(Constants.SELECTED_ITEM.getNumVal());
+			if (Inventory.find(Constants.FILLED_SELECTED_ITEM.getNumVal()).length == 0) {
 				contain[0].click("Use");
 				Helper.waitCondition(Game.getUptext().contains("Use->" + contain[0].getID()));  //TODO Check if this works, otherwise switch to static sleep
 				source.click();
-				Helper.waitCondition(Inventory.find(Constants.Items.FILLED_BOWL.getNumVal()).length > 0); //TODO Check if this works, otherwise switch to static sleep
+				Helper.waitCondition(Inventory.find(Constants.FILLED_SELECTED_ITEM.getNumVal()).length > 0); //TODO Check if this works, otherwise switch to static sleep
 			}
 		}else{
 			WebWalking.walkTo(Constants.Tiles.FOUTAINS.getArea().getRandomTile());
@@ -37,7 +37,7 @@ public class FillContainer extends Node {
 	@Override
 	public boolean validate() {
 		// TODO Auto-generated method stub
-		return Inventory.isFull() && Inventory.getCount(Constants.Items.FILLED_BOWL.getNumVal()) != 28;
+		return Inventory.isFull() && Inventory.getCount(Constants.FILLED_SELECTED_ITEM.getNumVal()) != 28;
 	}
 
 
