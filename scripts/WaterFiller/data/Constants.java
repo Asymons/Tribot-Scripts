@@ -6,6 +6,7 @@ import org.tribot.api2007.types.RSTile;
 public class Constants {
 	
 	public static Items SELECTED_ITEM, FILLED_SELECTED_ITEM;
+	public static States CURRENT_STATE;
 	
 	public static void setItem(Items bowl, Items filledBowl){
 		SELECTED_ITEM = bowl;
@@ -63,6 +64,22 @@ public class Constants {
 		public RSArea getArea(){
 			return area;
 		}
+	}
+	
+	public enum States{
+		FILLING("Currently Filling Object"), WALKING_TO_BANK("Currently Walking to Bank"), 
+		WALKING_TO_FOUNTAIN("Currently Walking to Fountains"), BANKING("Currently Banking");
+		
+		private String state;
+		
+		States(String numVal){
+			this.state = numVal;
+		}
+		
+		public String getState(){
+			return state;
+		}
+		
 	}
 
 }

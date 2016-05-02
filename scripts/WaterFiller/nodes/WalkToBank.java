@@ -14,7 +14,9 @@ public class WalkToBank extends Node {
 	public void execute() {
 
 		if (WebWalking.walkToBank()) {
+			Constants.CURRENT_STATE = Constants.States.WALKING_TO_BANK;
 			if (Banking.isInBank()) {
+				Constants.CURRENT_STATE = Constants.States.BANKING;
 				Banking.openBankBanker();
 				Helper.waitCondition(Banking.isBankScreenOpen());
 				Banking.depositAll();

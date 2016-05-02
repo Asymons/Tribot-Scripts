@@ -28,7 +28,7 @@ public class Helper {
 	}
 	
 	public static void waitCondition(boolean x){
-		Timing.waitCondition(smartWaitCondition(x), General.random(750,1000));
+		Timing.waitCondition(smartWaitCondition(x), General.random(1500,2000));
 	}
 	
 

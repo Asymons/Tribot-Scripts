@@ -12,6 +12,8 @@ import scripts.WaterFiller.data.Constants;
 import scripts.WaterFiller.data.Helper;
 
 public class FillContainer extends Node {
+	
+	public static int TOTAL_COUNT = 0;
 
 
 	//TODO Check Animation if player is filling bowl, add to last condition  Animation:832
@@ -20,6 +22,7 @@ public class FillContainer extends Node {
 	public void execute() {
 
 		if (Constants.Tiles.FOUTAINS.getArea().contains(Player.getPosition())) {
+			Constants.CURRENT_STATE = Constants.States.FILLING;
 			RSObject source = Helper.findNearest(15, Constants.Objects.WATER_SOURCE.getNumVal());
 			RSItem[] contain = Inventory.find(Constants.SELECTED_ITEM.getNumVal());
 			if (Inventory.find(Constants.FILLED_SELECTED_ITEM.getNumVal()).length == 0) {
@@ -28,7 +31,14 @@ public class FillContainer extends Node {
 				source.click();
 				Helper.waitCondition(Inventory.find(Constants.FILLED_SELECTED_ITEM.getNumVal()).length > 0); //TODO Check if this works, otherwise switch to static sleep
 			}
+			
+			if(Inventory.find(Constants.FILLED_SELECTED_ITEM.getNumVal()).length == 28){
+				TOTAL_COUNT = TOTAL_COUNT + 28;
+			}
+			
+			
 		}else{
+			Constants.CURRENT_STATE = Constants.States.WALKING_TO_FOUNTAIN;
 			WebWalking.walkTo(Constants.Tiles.FOUTAINS.getArea().getRandomTile());
 		}
 
